@@ -25,7 +25,7 @@
 
 ## Установка
 
-Через менеджер модулей **ABR \| Библиотека модулей** (требуется модуль [AbrModules](https://github.com/Y-Abramov/abr-modules)):
+Через менеджер модулей **ABR \| Библиотека модулей** (требуется модуль [AbrModules](https://github.com/Y-Abramov/AbrModules)):
 
 1. Открыть **ABR → Модули → Управление модулями**
 2. Найти **ModelDesk** в каталоге
