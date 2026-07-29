@@ -1,0 +1,13 @@
+{
+  "variables": {
+    "md_tab_visible": "$(if,$(sysvar,task_modeldesk),0,1)"
+  },
+
+  "ribbon": {
+    "rbproj": {
+      "items": [
+        { "group": "modeldesk_tab", "title": "Диспетчер моделей", "flags": "$(md_tab_visible)" }
+      ]
+    }
+  }
+}

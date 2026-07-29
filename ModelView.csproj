@@ -1,0 +1,75 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net48</TargetFramework>
+    <OutputType>Library</OutputType>
+    <AssemblyName>Abr.ModelDesk</AssemblyName>
+    <RootNamespace>ModelDesk</RootNamespace>
+    <LangVersion>latest</LangVersion>
+    <Version>1.2.0</Version>
+    <RoburInstallDir Condition="'$(RoburInstallDir)' == ''">C:\Program Files\Topomatic Robur Road 16.0</RoburInstallDir>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="Topomatic.ApplicationPlatform">
+      <HintPath>$(RoburInstallDir)\Topomatic.ApplicationPlatform.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Topomatic.Cad.View">
+      <HintPath>$(RoburInstallDir)\Topomatic.Cad.View.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Topomatic.Cad.Foundation">
+      <HintPath>$(RoburInstallDir)\Topomatic.Cad.Foundation.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Topomatic.FoundationClasses">
+      <HintPath>$(RoburInstallDir)\Topomatic.FoundationClasses.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Topomatic.Controls">
+      <HintPath>$(RoburInstallDir)\Topomatic.Controls.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Topomatic.Alg">
+      <HintPath>$(RoburInstallDir)\Topomatic.Alg.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Topomatic.Alg.Model">
+      <HintPath>$(RoburInstallDir)\Topomatic.Alg.Model.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Topomatic.Alg.Road">
+      <HintPath>$(RoburInstallDir)\Topomatic.Alg.Road.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Topomatic.Alg.Runtime">
+      <HintPath>$(RoburInstallDir)\Topomatic.Alg.Runtime.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <!-- Мост MCP Топоматика. DLL приезжает пакетом robur-mcp и лежит рядом с Robur -
+         в .tpm модуля её класть нельзя, отсюда Private=false. -->
+    <Reference Include="Topomatic.ToolBridge">
+      <HintPath>$(RoburInstallDir)\Topomatic.ToolBridge.dll</HintPath>
+      <Private>false</Private>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="..\Shared\Bootstrap\*.cs" LinkBase="Shared\Bootstrap" />
+    <Compile Include="..\Shared\Sdk\*.cs" LinkBase="Shared\Sdk" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="abr.ico" />
+    <Compile Remove="SwitchModelCommand.cs" />
+  </ItemGroup>
+
+</Project>

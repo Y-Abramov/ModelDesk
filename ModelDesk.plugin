@@ -1,0 +1,140 @@
+{
+  "assemblies": {
+    "modeldesk": {
+      "assembly": "Abr.ModelDesk.dll, ModelDesk.PluginHost"
+    }
+  },
+
+  "broadcasts": {
+    "tool_request": "modeldesk_generate_tools"
+  },
+
+  "variables": {
+    "md_tab_visible": "$(if,$(sysvar,task_modeldesk),0,1)",
+    "md_btn_checked": "$(if,$(sysvar,task_modeldesk),20,16)"
+  },
+
+  "actions": {
+    "md_switch_model": {
+      "cmd":         "switch_active_model",
+      "title":       "Переключить модель",
+      "description": "Кликните на объект — модель станет активной",
+      "icon":        "md_switch"
+    },
+    "md_hide_model": {
+      "cmd":         "hide_clicked_model",
+      "title":       "Скрыть модель",
+      "description": "Кликните на объект — модель будет скрыта",
+      "icon":        "md_hide"
+    },
+    "md_show_all": {
+      "cmd":         "show_all_models",
+      "title":       "Показать все",
+      "description": "Открыть все скрытые модели на плане",
+      "icon":        "md_show_all"
+    },
+    "md_hide_all": {
+      "cmd":         "hide_all_models",
+      "title":       "Скрыть все",
+      "description": "Скрыть все открытые модели на плане",
+      "icon":        "md_hide_all"
+    },
+    "md_isolate": {
+      "cmd":         "isolate_model",
+      "title":       "Изолировать",
+      "description": "Кликните на объект — остальные модели будут скрыты",
+      "icon":        "md_isolate"
+    },
+    "md_about": {
+      "cmd":         "about_modeldesk",
+      "title":       "О модуле",
+      "description": "Информация о модуле ModelDesk",
+      "icon":        "abr_about"
+    },
+    "md_manager": {
+      "cmd":         "open_model_manager",
+      "title":       "Диспетчер",
+      "description": "Диспетчер моделей: список, фильтр, переименование",
+      "icon":        "md_manager"
+    },
+    "md_road_object": {
+      "cmd":         "open_model_card",
+      "title":       "Открыть модель",
+      "description": "Карточка модели: сводка и создание ведомостей",
+      "icon":        "ic_road"
+    },
+    "id_show_modeldesk_tab": {
+      "cmd":         "$(if,$(sysvar,task_modeldesk),sysvar task_modeldesk 0,sysvar task_modeldesk 1)",
+      "title":       "Диспетчер моделей",
+      "description": "Управление видимостью и диспетчер моделей проекта",
+      "icon":        "md_desk",
+      "flags":       "$(md_btn_checked)"
+    },
+    "id_hide_modeldesk_tab": {
+      "cmd":   "sysvar task_modeldesk 0",
+      "title": "Закрыть",
+      "icon":  "ic_close"
+    }
+  },
+
+  "ribbon": {
+    "rbproj.modules": {
+      "items": [
+        { "group": "module_modeldesk", "title": "Диспетчер моделей" }
+      ]
+    },
+    "rbproj.modules.module_modeldesk": {
+      "items": [
+        { "button": "id_show_modeldesk_tab", "size": "large" }
+      ]
+    },
+
+    "rbproj.modeldesk_tab": {
+      "items": [
+        { "group": "md_cmds_click", "title": "По клику" },
+        { "group": "md_cmds_all",   "title": "Все модели" },
+        { "group": "md_manage",     "title": "Управление" },
+        { "group": "md_explorer",   "title": "Проводник" },
+        { "group": "md_close",      "title": "Закрыть" }
+      ]
+    },
+    "rbproj.modeldesk_tab.md_cmds_click": {
+      "items": [
+        { "button": "md_switch_model", "size": "large" },
+        { "button": "md_hide_model",   "size": "large" },
+        { "button": "md_isolate",      "size": "large" }
+      ]
+    },
+    "rbproj.modeldesk_tab.md_cmds_all": {
+      "items": [
+        { "button": "md_show_all", "size": "large" },
+        { "button": "md_hide_all", "size": "large" }
+      ]
+    },
+    "rbproj.modeldesk_tab.md_manage": {
+      "items": [
+        { "button": "md_manager", "size": "large" },
+        { "button": "md_about",   "size": "small" }
+      ]
+    },
+    "rbproj.modeldesk_tab.md_explorer": {
+      "items": [
+        { "button": "md_road_object", "size": "large" }
+      ]
+    },
+    "rbproj.modeldesk_tab.md_close": {
+      "items": [
+        { "button": "id_hide_modeldesk_tab", "size": "large" }
+      ]
+    }
+  },
+
+  "menubars": {
+    "rbproj.modules_menu": {
+      "items": [ { "id": "md_menu", "title": "Диспетчер моделей" } ]
+    },
+    "rbproj.modules_menu.md_menu": {
+      "items": [ "md_switch_model", "md_hide_model", "md_isolate", "-", "md_show_all", "md_hide_all", "-", "md_manager", "md_road_object", "md_about" ]
+    }
+  }
+}
